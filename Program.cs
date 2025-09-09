@@ -56,6 +56,20 @@
                 teamsCopy[1] = last;
             }
 
+            // Second half of season reverse home / away
+            for (int round = 0; round < numTeams - 1; round++)
+            {
+                List<(string Home, string Away)> weekFixtures = [];
+                for (int match = 0; match < numTeams / 2; match++)
+                {
+                    string home = gameweeks[round][match].Away;
+                    string away = gameweeks[round][match].Home;
+                    weekFixtures.Add((home, away));
+                }
+                gameweeks.Add(weekFixtures);
+            }
+
+            // Print gameweeks
             for (int week = 0; week < gameweeks.Count; week++)
             {
                 Console.WriteLine($"\nGameweek {week + 1}:");
